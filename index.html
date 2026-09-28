@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0f766e"><meta name="description" content="Meu Cardápio">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+<title>Meu Cardápio</title>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><div><span class="eyebrow">RESTAURANTE</span><h1>🍽️ Meu Cardápio</h1></div><button class="icon-btn" id="settingsBtn">⚙️</button></header>
+<main>
+<section id="daysView" class="view active"><div class="section-head"><h2>Cardápio da semana</h2><p>Escolha um dia para organizar o estoque.</p></div><div id="dayList" class="day-list"></div></section>
+<section id="menuView" class="view"><button class="back-btn" id="backToDays">← Semana</button><div class="hero-card"><span class="eyebrow">CARDÁPIO</span><h2 id="menuDayTitle"></h2><p>Cadastre os elementos e controle a quantidade disponível.</p></div><div class="card"><div class="card-title-row"><h3>Elementos do dia</h3><button class="small-btn" id="addElementBtn">＋ Adicionar</button></div><div id="elementList"></div><div id="emptyElements" class="empty">Nenhum elemento cadastrado neste dia.</div></div><button class="primary-btn full" id="buildPlateBtn">🍛 Montar prato</button></section>
+<section id="plateView" class="view"><button class="back-btn" id="backToMenu">← Cardápio</button><div class="hero-card"><span class="eyebrow">NOVO PEDIDO</span><h2 id="plateDayTitle"></h2><p>A seleção é temporária e será zerada quando o pedido for criado.</p></div><div class="card"><div id="plateList"></div><div id="emptyPlate" class="empty">Adicione elementos ao cardápio primeiro.</div></div><div class="card"><h3>Destino do pedido</h3><label class="field-label">Mesa<select id="tableSelect"><option value="">Selecione uma mesa</option><option>A1</option><option>A2</option><option>A3</option><option>A4</option><option>A5</option><option>A6</option><option>B1 quadro</option><option>B2 porta</option><option>B3</option><option>B4</option><option>B5 meio</option><option>B6 peixe</option><option>Entrega</option></select></label></div><div class="card"><div class="summary-head"><h3>Resumo do prato</h3><button class="text-btn" id="clearPlateBtn">Limpar</button></div><div id="plateSummary"></div></div><button class="primary-btn full" id="saveOrderBtn">✓ Criar pedido</button></section>
+<section id="ordersView" class="view"><div class="section-head"><h2>Pedidos</h2><p>Gerencie pedidos pendentes, concluídos e cancelados.</p></div><div id="ordersList"></div><div id="emptyOrders" class="empty">Nenhum pedido salvo.</div></section>
+<section id="settingsView" class="view"><button class="back-btn" id="backFromSettings">← Voltar</button><div class="hero-card"><span class="eyebrow">DADOS</span><h2>Configurações</h2><p>Os dados ficam neste dispositivo. O PWA pode continuar funcionando offline depois de instalado.</p></div><div class="card"><h3>Gerenciamento</h3><p class="muted">Use esta opção somente se quiser começar o sistema novamente.</p><button class="danger-btn full" id="resetBtn">Apagar todos os cardápios e pedidos</button></div></section>
+</main>
+<nav class="bottom-nav"><button class="nav-item active" data-nav="days">🏠<span>Semana</span></button><button class="nav-item" data-nav="menu">📋<span>Cardápio</span></button><button class="nav-item" data-nav="plate">🍛<span>Prato</span></button><button class="nav-item" data-nav="orders">🧾<span>Pedidos</span></button></nav>
+</div>
+<dialog id="elementDialog"><form id="elementForm" class="dialog-card"><button type="button" class="dialog-close" id="closeDialog">×</button><h2>Adicionar elemento</h2><label>Nome<input id="elementName" required maxlength="40" placeholder="Ex.: Arroz"></label><label>Quantidade disponível<input id="elementQty" type="number" min="1" max="999" value="1" required></label><button class="primary-btn full" type="submit">Adicionar</button></form></dialog>
+<div id="toast" class="toast"></div><script src="app.js"></script>
+</body></html>
